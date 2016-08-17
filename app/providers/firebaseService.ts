@@ -15,7 +15,7 @@ export class FirebaseService {
 
   // Firebase User Properties
   //-----------------------------------------------------
-  uid() {
+  public uid() : String {
     return firebase.auth().currentUser.uid;
   }
   currentUser() {
@@ -240,4 +240,12 @@ export class FirebaseService {
       return Math.floor((Math.random() * 100000000) + 100);
   }
 
+  encodeMonth(date: Date) {
+    return date.getFullYear() * 100+ date.getMonth();
+  }
+  decodeMonth(date : number) : Date {
+    let month : number = date % 100;
+    let year  : number = Math.floor(date / 100); 
+    return new Date( year, month);
+  }
 }
