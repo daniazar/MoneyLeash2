@@ -1,36 +1,32 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import {Injectable} from '@angular/core';
 
-import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
-import {ISettings} from '../models/settings-model';
+declare var firebase: any;
 
 @Injectable()
 export class SettingsData {
 
-  public settingsData: any;
-  public currentUser: any;
+  public user: any;
+  public userdata: any;
 
-  constructor(public af: AngularFire) {
-    this.currentUser = firebase.auth().currentUser;
-    this.settingsData = firebase.database().ref('/users/');
+  constructor() {
+    this.user = firebase.auth().currentUser;
+    this.userdata = firebase.database().ref('/users/');
   }
 
   getSettingsData(): any {
-    return this.settingsData.child(this.currentUser.uid);
+    return this.userdata.child(this.user.uid);
   }
 
   updateDefaultBalance(newdefaultbalance: string): any {
-    this.settingsData.child(this.currentUser.uid).update({'defaultbalance' : newdefaultbalance});
+    this.userdata.child(this.user.uid).update({'defaultbalance' : newdefaultbalance});
   }
 
   updateDefaultDate(newdefaultdate: string): any {
-    this.settingsData.child(this.currentUser.uid).update({'defaultdate' : newdefaultdate});
+    this.userdata.child(this.user.uid).update({'defaultdate' : newdefaultdate});
   }
 
   updateTouchID(ischecked: boolean): any {
-    this.settingsData.child(this.currentUser.uid).update({'enabletouchid' : ischecked});
+    this.userdata.child(this.user.uid).update({'enabletouchid' : ischecked});
   }
 
 }
-
