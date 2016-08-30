@@ -12,7 +12,11 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
     Accounts here
-  </ion-list>
+      <ion-list>
+          <ion-item *ngFor="let account of accounts">
+              <ion-icon name="{{account.icon}}" item-left></ion-icon>
+              {{account.name}}
+          </ion-item>
+      </ion-list>
 </ion-content>

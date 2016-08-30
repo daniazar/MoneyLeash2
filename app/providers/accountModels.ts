@@ -2,7 +2,7 @@ import {FirebaseService} from './firebaseService';
 
 // Firebase
 declare var firebase: any;
-
+/*
 export interface IMyHouse {
   //dateCreated: number;
   houseid: string;
@@ -40,7 +40,19 @@ export class MyHouse implements IMyHouse {
     refTypes.push({ name: 'Brokerage', icon: '0' });
 
 
-}    firebase.database().ref('/houses/' + key + "/housemembers/" + this.uid()).update(housemember);
+}   // firebase.database().ref('/houses/' + key + "/housemembers/" + this.uid()).update(housemember);
 
   
-  }
+}*/
+
+
+export class Account {
+    name: string;
+    icon: string;
+    id: string;
+    constructor(name: string, icon: string, id?: string   ) {
+        this.name = name;
+        this.icon = icon;
+        this.id = id;
+    }
+}
