@@ -45,14 +45,29 @@ export class MyHouse implements IMyHouse {
   
 }*/
 
+export class ReportMonth {
+    reportId: string;
+    monthCode: number;
+    constructor(reportId: string, monthCode: number) {
+        this.reportId = reportId;
+        this.monthCode = monthCode;
+    }
+}
 
 export class Account {
     name: string;
     icon: string;
     id: string;
-    constructor(name: string, icon: string, id?: string   ) {
+    balance: number;
+    reports: ReportMonth[]
+    constructor(name: string, icon: string, balance: number, id?: string, reports?: ReportMonth[]   ) {
         this.name = name;
         this.icon = icon;
         this.id = id;
+        this.reports = reports;
+        this.balance = balance;
     }
+
+    
+
 }
