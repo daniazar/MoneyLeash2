@@ -10,7 +10,7 @@ export class Company {
     category: string[];
     subCategory: string[];
     expenseType: string[];
-    constructor(name: string, icon: string, id?: string, accounts?: Account[], details?: string[], locations?: string[], category: string[], subCategory: string[], expenseType: string[]  ) {
+    constructor(name: string, icon: string, accounts: Account[], details: string[], locations: string[], category: string[], subCategory: string[], expenseType: string[],  id?: string) {
         this.name = name;
         this.icon = icon;
         this.id = id;

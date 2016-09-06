@@ -1,4 +1,4 @@
-﻿
+﻿import {Person} from './personModel'
 export type ticketType = "FC" | "NC" | "TK";
 export type ticketOptions = "A" | "B" | "C";
 export type TaxOptions = "No Gravado" | "Neto gravado al 21%" | "Neto Gravado al 27%" | "Neto Gravado al 10.5%";

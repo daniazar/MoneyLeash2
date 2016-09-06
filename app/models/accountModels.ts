@@ -1,7 +1,7 @@
-import {FirebaseService} from './firebaseService';
+//import {FirebaseService} from './firebaseService';
 
 // Firebase
-declare var firebase: any;
+//declare var firebase: any;
 /*
 export interface IMyHouse {
   //dateCreated: number;
