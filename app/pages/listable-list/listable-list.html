@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar mlnavbar>
+    <button menuToggle>
+      <ion-icon name="menu" mllightblue></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button (click)="presentFilter()">
+        <ion-icon name="add" mllightblue></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+      <ion-list>
+          <ion-item *ngFor="let element of elements">
+              <ion-icon name="{{element.icon}}" item-left></ion-icon>
+              {{element.name}}
+          </ion-item>
+      </ion-list>
+</ion-content>

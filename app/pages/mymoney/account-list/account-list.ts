@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, MenuController, Alert} from 'ionic-angular';
-import {Account} from '../../../providers/accountModels';
+import {Account} from '../../../models/accountModels';
 @Component({
   templateUrl: 'build/pages/mymoney/account-list/account-list.html'
 })

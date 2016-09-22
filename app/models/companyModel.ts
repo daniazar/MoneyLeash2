@@ -1,6 +1,6 @@
 import {Account} from './accountModels';
-
-export class Company {
+import {ListElement} from './listElement';
+export class Company implements ListElement {
     name: string;
     icon: string;
     id: string;
@@ -31,5 +31,15 @@ export class Company {
     }
 
 
+    selectElement(): void {
+        //show accounts.
+    };
+    edit(): ListElement {
+        //show edit screen
+    }
+    delete(): void {
+        //show delete screen
+    }
+    
 
 }
