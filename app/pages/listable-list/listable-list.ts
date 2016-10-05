@@ -5,19 +5,18 @@ import {ListElement} from '../../models/listElement';
     templateUrl: 'build/pages/listable-list/listable-list.html'
 })
 
-export class ListPage<T implements ListElement > {
-  login: {username?: string, password?: string} = {};
+export class ListPage<T extends ListElement > {
   submitted = false;
-  elements: ListElement[];
+  elements: T[];
   editable: boolean = false;
   deleteable: boolean = false;
   title: string = 'placeholder';
 
 
   constructor(
-      public nav: NavController, title: string) {
+      public nav: NavController, title: string, elements: T[]) {
       this.title = title;
-      this.elements = [new ListElement('name', 'icon'), new ListElement('name', 'icon')];
+      this.elements = elements//[new ListElement('name', 'icon'), new ListElement('name', 'icon')];
   }
 
   private openAbout(): void {

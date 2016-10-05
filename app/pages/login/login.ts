@@ -3,7 +3,7 @@ import {NavController, Alert, AlertController, Loading, LoadingController, MenuC
 import {UserData} from '../../providers/user-data';
 import {SignupPage} from '../signup/signup';
 import {ForgotPasswordPage} from '../forgot-password/forgot-password';
-import {AccountListPage} from '../mymoney/account-list/account-list';
+import {CompanyListPage} from '../mymoney/company-list/company-list';
 
 // Firebase
 import {FirebaseAuth} from 'angularfire2';
@@ -54,7 +54,7 @@ export class LoginPage {
   private LoginSuccess(): void {
     //this.db.getMyPreferences();
     //this.db.getMyHouse();
-    this.nav.setRoot(AccountListPage, {}, {animate: true, direction: 'forward'});
+    this.nav.setRoot(CompanyListPage, {}, {animate: true, direction: 'forward'});
     //this.loading.dismiss();
   }
   

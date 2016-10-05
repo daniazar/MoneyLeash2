@@ -11,7 +11,7 @@ export class AccountListPage {
   accounts: Account[];
   constructor(
       public nav: NavController) {
-      this.accounts = [new Account('hola', 'icono'), new Account('2', 'rose') ];
+   //   this.accounts = [new Account('hola', 'icono'), new Account('2', 'rose') ];
   }
       
   private openAbout(): void {

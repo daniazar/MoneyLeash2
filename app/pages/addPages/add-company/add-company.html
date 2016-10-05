@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>New Company</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>name</ion-label>
+            <ion-input [(ngModel)]="name" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon [name]="myIcon" item-left></ion-icon>
+            <ion-label>icon</ion-label>
+            <ion-select [(ngModel)]="myIcon">
+                <ion-option *ngFor="let icon of icons" value="{{icon}}">{{icon}}</ion-option>
+            </ion-select>
+        </ion-item>
+
+    </ion-list>
+
+    <div padding>
+        <button block (click)=onSubmit()>
+            Add Company
+        </button>
+    </div>
+</ion-content>

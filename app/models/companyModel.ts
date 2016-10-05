@@ -4,6 +4,9 @@ export class Company implements ListElement {
     name: string;
     icon: string;
     id: string;
+    editable: boolean;
+    deleteable: boolean;
+
     accounts: Account[];
     details: string[];
     locations: string[];
@@ -34,12 +37,14 @@ export class Company implements ListElement {
     selectElement(): void {
         //show accounts.
     };
-    edit(): ListElement {
+    edit(): void {
         //show edit screen
     }
     delete(): void {
         //show delete screen
     }
     
-
+    static addElement(): void {
+        
+    }
 }
