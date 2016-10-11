@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {Company} from '../models/CompanyModel';
+import {Account} from '../models/AccountModel';
 
 declare var firebase: any;
 
@@ -25,19 +27,19 @@ export class AccountService {
         })*/;
     }
 
-    addAccount(company: any, account: any) {
+    addAccount(company: Company, account: Account) {
 
         var newAccount = this.accounts.push();
         newAccount.set({
-            name: company.name,
-            icon: company.icon,
+            name: account.name,
+            icon: account.icon,
             balance: 0
         });
         // we can also chain the two calls together
         var inCompany = this.companyData.child(company.id + '/accounts/' ).push();
         inCompany.set({
-            name: company.name,
-            icon: company.icon,
+            name: account.name,
+            icon: account.icon,
             id: newAccount.key
         });
     }
@@ -46,8 +48,9 @@ export class AccountService {
         return this.accounts.child(id).once("value");
     }
 
-    addAccountToCompany(companyId: any, account: any) {
-        var newAccount = this.companyData.child(companyId).child('Acount').push();
+    addAccountToCompany(company: Company, account: Account) {
+        var newAccount = this.companyData.child(company.id).child('Acount').push();
         newAccount.set(account);
     }
+
 }

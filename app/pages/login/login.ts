@@ -3,7 +3,7 @@ import {NavController, Alert, AlertController, Loading, LoadingController, MenuC
 import {UserData} from '../../providers/user-data';
 import {SignupPage} from '../signup/signup';
 import {ForgotPasswordPage} from '../forgot-password/forgot-password';
-import {CompanyListPage} from '../mymoney/company-list/company-list';
+import {CompanyListPage} from '../listPages/company-list';
 
 // Firebase
 import {FirebaseAuth} from 'angularfire2';

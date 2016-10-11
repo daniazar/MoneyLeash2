@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {NavController, MenuController, Alert} from 'ionic-angular';
 import {Company} from '../../../models/CompanyModel';
-import {ComnpanyService} from '../../../providers/company-provider';
+import {CompanyService} from '../../../providers/company-provider';
 import {ICONS} from '../../../models/iconsOption';
 
 
 @Component({
     templateUrl: 'build/pages/addPages/add-company/add-company.html',
-    providers: [ComnpanyService]
+    providers: [CompanyService]
 
 })
 
@@ -19,7 +19,7 @@ export class CompanyModal {
   name = '';
   myIcon = '';
   constructor(
-      public nav: NavController, public companyService: ComnpanyService) {
+      public nav: NavController, public companyService: CompanyService) {
       //console.log(ICONS);
   }
       

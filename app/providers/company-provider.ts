@@ -1,14 +1,17 @@
 import {Injectable} from '@angular/core';
+import {Company} from '../models/CompanyModel';
 
 declare var firebase: any;
 
 @Injectable()
-export class ComnpanyService {
+export class CompanyService {
 
     public user: any;
     public userData: any;
     public companyData: any;
-    public companyList: any;
+    public companyList: Company[];
+    public selectedCompany: Company;
+
     public userDataCompany: any;
     constructor() {
         this.user = firebase.auth().currentUser;
@@ -17,12 +20,17 @@ export class ComnpanyService {
         this.companyData = firebase.database().ref('/company/');
     }
 
-    getCompanyList(callback) {
-        return this.userDataCompany.on("value", callback)/*.then(function (snapshot) {
+    getCompanyList() {
+        return this.userDataCompany.on("value").then(function (snapshot) {
             var data = snapshot.val();
-            //this.companyList = data;
-            console.log(data);
-        })*/;
+            this.companyList = [];
+            for (var key in data) {
+                var company = new Company(data[key].name, data[key].icon, data[key].id);
+                this.companyList.push(company);
+            }
+            console.log(this.companyList);
+            return this.companyList;
+        });
     }
 
     addCompany(company: any) {
@@ -42,11 +50,14 @@ export class ComnpanyService {
     }
 
     getCompany(id: any) {
-        return this.companyData.child(id).once("value");
+        return this.companyData.child(id).once("value").then((data) => {
+            data = data.val();
+            return new Company(data.name, data.icon, data.id, data.accounts, data.details, data.locations, data.category, data.subCategory, data.expenseType);
+        });
     }
 
-    addAccountToCompany(companyId: any, account: any) {
-        this.companyData.child(id)
+    addAccountToCompany(company: Company, account: any) {
+        this.companyData.child(company.id);
 
     }
 }

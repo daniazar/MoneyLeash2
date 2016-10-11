@@ -3,18 +3,17 @@
     <button menuToggle>
       <ion-icon name="menu" mllightblue></ion-icon>
     </button>
-    <ion-title>Company</ion-title>
+    <ion-title>{{title}}</ion-title>
     <ion-buttons end>
-      <button (click)="openModal()">
+      <button (click)="addElement()">
         <ion-icon name="add" mllightblue></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content>
-    Company here
       <ion-list>
-          <ion-item *ngFor="let element of elements">
+          <ion-item *ngFor="let element of elements" (click)="selectElement(element)">
               <ion-icon name="{{element.icon}}" item-left></ion-icon>
               {{element.name}}
           </ion-item>
