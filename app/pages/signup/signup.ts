@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, Alert, AlertController, Loading, LoadingController} from 'ionic-angular';
 
 // Pages
-import {AccountListPage} from '../mymoney/account-list/account-list';
+import {AccountListPage} from '../listPages/account-list';
 
 // Services
 import {UserData} from '../../providers/user-data';

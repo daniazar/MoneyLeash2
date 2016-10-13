@@ -22,16 +22,12 @@ export class CompanyListPage {
   constructor(
       public nav: NavController, public companyService: CompanyService, public dataService: DataService) {
       this.elements = [];
-      var callback = (dataSnapshot) => {
-          var aux = dataSnapshot.val();
-          for (var key in aux) {
-              var company = new Company(aux[key].name, aux[key].icon, aux[key].id);
-          }
-          console.log(aux);
-      };
-      companyService.getCompanyList().then((val) => {
+      var callback = (val) => {
           this.elements = val;
-      });
+      };
+      //var test = new Company('name', 'icon', 'id')
+
+      companyService.getCompanyList(callback);
   }
       
   private openAbout(): void {

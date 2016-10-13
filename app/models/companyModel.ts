@@ -1,6 +1,5 @@
 import {Account} from './accountModel';
-import {ListElement} from './listElement';
-export class Company implements ListElement {
+export class Company {
     name: string;
     icon: string;
     id: string;
@@ -13,7 +12,15 @@ export class Company implements ListElement {
     category: string[];
     subCategory: string[];
     expenseType: string[];
-    constructor(name: string, icon: string, id?: string, accounts?: Account[], details?: string[], locations?: string[], category?: string[], subCategory?: string[], expenseType?: string[]) {
+    /*
+    constructor(name: string, icon: string, id: string) {
+        this.name = name;
+        this.icon = icon;
+        this.id = id;
+    }
+    */
+    
+    constructor(name: string, icon: string, id: string, accounts?: Account[], details?: string[], locations?: string[], category?: string[], subCategory?: string[], expenseType?: string[]) {
         this.name = name;
         this.icon = icon;
         this.id = id;
@@ -33,18 +40,5 @@ export class Company implements ListElement {
         this.accounts.filter( a => a!==account);
     }
 
-
-    selectElement(): void {
-        //show accounts.
-    };
-    edit(): void {
-        //show edit screen
-    }
-    delete(): void {
-        //show delete screen
-    }
-    
-    static addElement(): void {
-        
-    }
 }
+

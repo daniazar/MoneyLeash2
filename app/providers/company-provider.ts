@@ -9,27 +9,33 @@ export class CompanyService {
     public user: any;
     public userData: any;
     public companyData: any;
-    public companyList: Company[];
+    public companyList: any[];
     public selectedCompany: Company;
-
+    public callback;
     public userDataCompany: any;
     constructor() {
         this.user = firebase.auth().currentUser;
         this.userData = firebase.database().ref('/users/');
         this.userDataCompany = this.userData.child(this.user.uid + '/company/');
         this.companyData = firebase.database().ref('/company/');
+
     }
 
-    getCompanyList() {
-        return this.userDataCompany.on("value").then(function (snapshot) {
+    getCompanyList(callback) {
+        var self = this;
+
+        return this.userDataCompany.on("value", (snapshot) => {
             var data = snapshot.val();
-            this.companyList = [];
+            self.companyList = [];
             for (var key in data) {
-                var company = new Company(data[key].name, data[key].icon, data[key].id);
-                this.companyList.push(company);
+                //var company = new Company(data[key].name, data[key].icon, data[key].id);
+                var company = { name: data[key].name, icon: data[key].icon, id: data[key].id };
+
+                self.companyList.push(company);
             }
-            console.log(this.companyList);
-            return this.companyList;
+            console.log(self.companyList);
+            callback(self.companyList);
+            return self.companyList;
         });
     }
 

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, Alert, LoadingController} from 'ionic-angular';
 import {UserData} from '../../providers/user-data';
 import {LoginPage} from '../login/login';
-import {AccountListPage} from '../mymoney/account-list/account-list';
+import {AccountListPage} from '../listPages/account-list';
 
 // Firebase
 import {FirebaseAuth} from 'angularfire2';

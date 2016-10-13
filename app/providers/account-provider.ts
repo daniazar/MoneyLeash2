@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Company} from '../models/CompanyModel';
 import {Account} from '../models/AccountModel';
-
+import {DataService} from './data-service';
 declare var firebase: any;
 
 @Injectable()

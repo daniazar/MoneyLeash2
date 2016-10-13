@@ -2,8 +2,8 @@
 
 // Firebase
 //declare var firebase: any;
-/*
-export interface IMyHouse {
+
+/*export interface IMyHouse {
   //dateCreated: number;
   houseid: string;
   housejoincode: string;
@@ -60,7 +60,7 @@ export class Account {
     id: string;
     balance: number;
     reports: ReportMonth[]
-    constructor(name: string, icon: string, balance: number, id?: string, reports?: ReportMonth[]   ) {
+    constructor(name: string, icon: string, id: string, balance?: number, reports?: ReportMonth[]   ) {
         this.name = name;
         this.icon = icon;
         this.id = id;

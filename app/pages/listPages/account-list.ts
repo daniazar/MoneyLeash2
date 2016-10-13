@@ -8,8 +8,7 @@ import {CompanyService} from '../../providers/company-provider';
 import {AccountService} from '../../providers/account-provider';
 
 @Component({
-    templateUrl: 'build/pages/mymoney/element-list.html',
-    providers: [AccountService, CompanyService, DataService]
+    templateUrl: 'build/pages/mymoney/element-list.html'
 
 })
 
@@ -19,7 +18,7 @@ export class AccountListPage {
   elements: Account[];
   constructor(
       public nav: NavController, public accountService: AccountService, public companyService: CompanyService, public dataService: DataService) {
-      this.elements = company.account;
+      this.elements = dataService.selectedCompany.accounts;
 
    //   this.accounts = [new Account('hola', 'icono'), new Account('2', 'rose') ];
   }
@@ -27,10 +26,6 @@ export class AccountListPage {
   private openAbout(): void {
     //this.nav.push(AboutPage);
     //console.log(this.auth.authenticated);
-  }
-  private openAbout(): void {
-      //this.nav.push(AboutPage);
-      //console.log(this.auth.authenticated);
   }
   public selectElement(account: Account) {
       this.accountService.getAccount(account.id).then((val) => {
@@ -42,7 +37,7 @@ export class AccountListPage {
   }
 
   public openModal() {
-      this.nav.push(CompanyModal, { animate: true, direction: 'up' });
+      //this.nav.push(CompanyModal, { animate: true, direction: 'up' });
   }
 
 }
