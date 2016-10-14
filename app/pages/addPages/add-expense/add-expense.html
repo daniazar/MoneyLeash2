@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>New Company</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    expenseDate: Date;
+    bank: string;
+    checkNum: string;
+    detail: string;
+    location: string;
+    ticket: Ticket;
+    vendor: Person;
+    tags: string[] //(movies for example)
+    category: string;
+    subCategory: string;
+    amount: number;
+    taxOptions: TaxOptions;
+    comments: string;
+    IVAretention: number;
+    IIBBretention: number;
+    AFIP: boolean;
+    AFIPdata: AFIPInfo;
+
+    <ion-list>
+        <ion-item>
+            <ion-label>name</ion-label>
+            <ion-input [(ngModel)]="name" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon [name]="myIcon" item-left></ion-icon>
+            <ion-label>icon</ion-label>
+            <ion-select [(ngModel)]="myIcon">
+                <ion-option *ngFor="let icon of icons" value="{{icon}}">{{icon}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Comments</ion-label>
+            <ion-input [(ngModel)]="comments" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Iva Retention</ion-label>
+            <ion-input [(ngModel)]="IVAretention" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>IIBB Retention</ion-label>
+            <ion-input [(ngModel)]="IIBBretention" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>AFIP</ion-label>
+            <ion-toggle [(ngModel)]="AFIP">
+            </ion-toggle>
+        </ion-item>
+        <ion-item [hidden]="!AFIP">
+            AFIPdata
+        </ion-item>
+
+    </ion-list>
+
+    <div padding>
+        <button block (click)=onSubmit()>
+            Add Company
+        </button>
+    </div>
+</ion-content>

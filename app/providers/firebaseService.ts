@@ -37,12 +37,4 @@ export class FirebaseService {
     }
   }
 
-  encodeMonth(date: Date) {
-    return date.getFullYear() * 100+ date.getMonth();
-  }
-  decodeMonth(date : number) : Date {
-    let month : number = date % 100;
-    let year  : number = Math.floor(date / 100); 
-    return new Date( year, month);
-  }
 }

@@ -47,11 +47,22 @@ export class MyHouse implements IMyHouse {
 
 export class ReportMonth {
     reportId: string;
+    accountId: string;
     monthCode: number;
-    constructor(reportId: string, monthCode: number) {
+    constructor(reportId: string, accountId: string, monthCode: number) {
         this.reportId = reportId;
         this.monthCode = monthCode;
     }
+
+    encodeMonth(date: Date) {
+        return date.getFullYear() * 100 + date.getMonth();
+    }
+    decodeMonth(date: number): Date {
+        let month: number = date % 100;
+        let year: number = Math.floor(date / 100);
+        return new Date(year, month);
+    }
+
 }
 
 export class Account {
