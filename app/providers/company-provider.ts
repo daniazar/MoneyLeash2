@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Company} from '../models/CompanyModel';
+import {Observable} from 'rxjs/observable';
 
 declare var firebase: any;
 
@@ -20,8 +21,20 @@ export class CompanyService {
         this.companyData = firebase.database().ref('/company/');
 
     }
+  getAll(): Observable<Company> {
+    return Observable.create(observer => {
+      let listener = this.userDataCompany.on('child_added', snapshot => {
+        let data = snapshot.val();
+        observer.next(
+          new Company(data.name, data.icon, data.id));
+      }, observer.error);
+      return () => {
+        this.userDataCompany.off('child_added', listener);
+      };
+    });
+  }
 
-    getCompanyList(callback) {
+  getCompanyList(callback) {
         var self = this;
 
         return this.userDataCompany.on("value", (snapshot) => {
@@ -40,7 +53,7 @@ export class CompanyService {
     }
 
     addCompany(company: any) {
-        
+
         var newCompany = this.companyData.push();
         newCompany.set({
             name: company.name,

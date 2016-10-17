@@ -16,20 +16,20 @@ import {AccountListPage} from '../listPages/account-list';
 export class CompanyListPage {
   login: {username?: string, password?: string} = {};
   submitted = false;
-  elements: Company[];
+  elements: Company[] = [];
   title = 'Company';
 
   constructor(
       public nav: NavController, public companyService: CompanyService, public dataService: DataService) {
       this.elements = [];
       var callback = (val) => {
-          this.elements = val;
+          this.elements.push(val);
       };
       //var test = new Company('name', 'icon', 'id')
 
-      companyService.getCompanyList(callback);
+      companyService.getAll().subscribe((callback));
   }
-      
+
   private openAbout(): void {
     //this.nav.push(AboutPage);
     //console.log(this.auth.authenticated);
@@ -46,5 +46,5 @@ export class CompanyListPage {
   public addElement() {
       this.nav.push(CompanyModal, { animate: true, direction: 'up' });
   }
-  
+
 }
