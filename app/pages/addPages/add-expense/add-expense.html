@@ -1,10 +1,10 @@
-<ion-header>
+    <ion-header>
     <ion-navbar>
         <ion-title>New Company</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content>
-    expenseDate: Date;
+
     bank: string;
     checkNum: string;
     detail: string;
@@ -12,20 +12,38 @@
     ticket: Ticket;
     vendor: Person;
     tags: string[] //(movies for example)
-    category: string;
-    subCategory: string;
-    amount: number;
     taxOptions: TaxOptions;
-    comments: string;
-    IVAretention: number;
-    IIBBretention: number;
-    AFIP: boolean;
     AFIPdata: AFIPInfo;
 
     <ion-list>
         <ion-item>
+            <ion-label>category</ion-label>
+            <ion-input [(ngModel)]="category" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>subCategory</ion-label>
+            <ion-input [(ngModel)]="subCategory" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
             <ion-label>name</ion-label>
             <ion-input [(ngModel)]="name" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Amount</ion-label>
+            <ion-input [(ngModel)]="amount" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>expenseDate</ion-label>
+            <ion-input [(ngModel)]="expenseDate" type="date"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Currency</ion-label>
+            <ion-input [(ngModel)]="currency" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Comments</ion-label>
+            <ion-input [(ngModel)]="comments" type="text"></ion-input>
         </ion-item>
 
         <ion-item>

@@ -6,7 +6,7 @@ import {ICONS} from '../../../models/iconsOption';
 
 
 @Component({
-    templateUrl: 'build/pages/addPages/add-company/add-company.html',
+    templateUrl: 'build/pages/addPages/add-expense/add-expense.html',
     providers: [CompanyService]
 
 })
