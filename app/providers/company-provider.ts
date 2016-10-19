@@ -26,7 +26,8 @@ export class CompanyService {
       let listener = this.userDataCompany.on('child_added', snapshot => {
         let data = snapshot.val();
         observer.next(
-          new Company(data.name, data.icon, data.id));
+//            new Company(data.name, data.icon, data.id));
+            { name: data.name, icon: data.icon, id: data.id });
       }, observer.error);
       return () => {
         this.userDataCompany.off('child_added', listener);
