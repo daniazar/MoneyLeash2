@@ -15,30 +15,28 @@ import {ExpenseModal} from '../../addPages/add-expense/add-expense';
 
 })
 
-export class ReportListPage {
+export class DetailsListPage {
     login: { username?: string, password?: string } = {};
     submitted = false;
     elements: ReportMonth[];
-    title;
     constructor(
         public nav: NavController, public accountService: AccountService, public companyService: CompanyService, public reportService: ReportService, public dataService: DataService) {
         this.elements = []
-        this.reportService.getAll().subscribe((val) => {
-            this.elements.push(val);
+        this.companyService.get(dataService.selectedCompany.id).subscribe((val) => {
+            this.elements = companyService.getDetails(val);
         });
-        this.title = dataService.selectedAccount.name;
-        //   this.accounts = [new Account('hola', 'icono'), new Account('2', 'rose') ];
     }
+    details: string[];
+    locations: string[];
+    category: string[];
+    subCategory: string[];
+    expenseType: string[];
 
-    private openAbout(): void {
-        //this.nav.push(AboutPage);
-        //console.log(this.auth.authenticated);
-    }
     public selectElement(account: Account) {
-        this.accountService.getAccount(account.id).then((val) => {
+        /*this.accountService.getAccount(account.id).then((val) => {
             this.dataService.selectedAccount = val;
             //this.nav.push(AccountListPage, { animate: true, direction: 'up' });
-        });
+        });*/
     }
 
     public openModal() {

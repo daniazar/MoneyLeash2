@@ -7,18 +7,9 @@
 
     <ion-list>
         <ion-item>
-            <ion-label floating>name</ion-label>
+            <ion-label floating>{{title}}</ion-label>
             <ion-input [(ngModel)]="name" type="text"></ion-input>
         </ion-item>
-
-        <ion-item>
-            <ion-icon [name]="myIcon" item-left></ion-icon>
-            <ion-label floating>icon</ion-label>
-            <ion-select [(ngModel)]="myIcon">
-                <ion-option *ngFor="let icon of icons" value="{{icon}}">{{icon}}</ion-option>
-            </ion-select>
-        </ion-item>
-
     </ion-list>
 
     <div padding>

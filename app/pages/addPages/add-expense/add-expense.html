@@ -16,58 +16,60 @@
     AFIPdata: AFIPInfo;
 
     <ion-list>
+
         <ion-item>
-            <ion-label>category</ion-label>
+            <ion-label floating>category</ion-label>
             <ion-input [(ngModel)]="category" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>subCategory</ion-label>
+            <ion-label floating>subCategory</ion-label>
             <ion-input [(ngModel)]="subCategory" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>name</ion-label>
+            <ion-label floating>name</ion-label>
             <ion-input [(ngModel)]="name" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Amount</ion-label>
+            <ion-label floating>Amount</ion-label>
             <ion-input [(ngModel)]="amount" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>expenseDate</ion-label>
-            <ion-input [(ngModel)]="expenseDate" type="date"></ion-input>
+            <ion-label floating>expenseDate</ion-label>
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="expenseDate"></ion-datetime>
+
         </ion-item>
         <ion-item>
-            <ion-label>Currency</ion-label>
+            <ion-label floating>Currency</ion-label>
             <ion-input [(ngModel)]="currency" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label>Comments</ion-label>
+            <ion-label floating>Comments</ion-label>
             <ion-input [(ngModel)]="comments" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-icon [name]="myIcon" item-left></ion-icon>
-            <ion-label>icon</ion-label>
+            <ion-label floating>icon</ion-label>
             <ion-select [(ngModel)]="myIcon">
                 <ion-option *ngFor="let icon of icons" value="{{icon}}">{{icon}}</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
-            <ion-label>Comments</ion-label>
+            <ion-label floating>Comments</ion-label>
             <ion-input [(ngModel)]="comments" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label>Iva Retention</ion-label>
+            <ion-label floating>Iva Retention</ion-label>
             <ion-input [(ngModel)]="IVAretention" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>IIBB Retention</ion-label>
+            <ion-label floating>IIBB Retention</ion-label>
             <ion-input [(ngModel)]="IIBBretention" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>AFIP</ion-label>
+            <ion-label floating>AFIP</ion-label>
             <ion-toggle [(ngModel)]="AFIP">
             </ion-toggle>
         </ion-item>

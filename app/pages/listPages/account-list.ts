@@ -3,12 +3,15 @@ import {NavController, MenuController, Alert} from 'ionic-angular';
 import {Account} from '../../models/accountModel';
 import {Company} from '../../models/companyModel';
 import {DataService} from '../../providers/data-service';
+import {AccountModal} from '../addPages/add-company/add-account';
+import {ReportListPage} from './report-list/report-list';
+
 
 import {CompanyService} from '../../providers/company-provider';
 import {AccountService} from '../../providers/account-provider';
 
 @Component({
-    templateUrl: 'build/pages/mymoney/element-list.html'
+    templateUrl: 'build/pages/listPages/element-list.html',
 
 })
 
@@ -18,7 +21,12 @@ export class AccountListPage {
   elements: Account[];
   constructor(
       public nav: NavController, public accountService: AccountService, public companyService: CompanyService, public dataService: DataService) {
-      this.elements = dataService.selectedCompany.accounts;
+      this.elements = []
+      this.accountService.getAll().subscribe((val) => {
+          this.elements.push(val);
+
+      });
+
 
    //   this.accounts = [new Account('hola', 'icono'), new Account('2', 'rose') ];
   }
@@ -28,17 +36,18 @@ export class AccountListPage {
     //console.log(this.auth.authenticated);
   }
   public selectElement(account: Account) {
-      this.accountService.getAccount(account.id).then((val) => {
-          this.dataService.selectedAccount = val;
-          this.nav.push(AccountListPage, { animate: true, direction: 'up' });
-
-      });
-
+      this.dataService.selectedAccount = account;
+      this.nav.push(ReportListPage, { animate: true, direction: 'up' });
   }
 
   public openModal() {
       //this.nav.push(CompanyModal, { animate: true, direction: 'up' });
   }
+
+  public addElement() {
+      this.nav.push(AccountModal, { animate: true, direction: 'up' });
+  }
+
 
 }
 

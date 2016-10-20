@@ -9,7 +9,6 @@ import {AccountListPage} from '../listPages/account-list';
 
 @Component({
     templateUrl: 'build/pages/listPages/element-list.html',
-    providers: [CompanyService, DataService]
 
 })
 
@@ -18,7 +17,6 @@ export class CompanyListPage {
   submitted = false;
   elements: Company[] = [];
   title = 'Company';
-
   constructor(
       public nav: NavController, public companyService: CompanyService, public dataService: DataService) {
       this.elements = [];
@@ -35,12 +33,10 @@ export class CompanyListPage {
     //console.log(this.auth.authenticated);
   }
   public selectElement(company: Company) {
-      this.companyService.getCompany(company.id).then((val) => {
-          this.dataService.selectedCompany = val;
-          this.nav.push(AccountListPage, { animate: true, direction: 'up' });
+      this.dataService.companyId = company.id;
+      this.companyService.get(company.id).subscribe();
 
-      });
-
+      this.nav.push(AccountListPage, { animate: true, direction: 'up' });
   }
 
   public addElement() {

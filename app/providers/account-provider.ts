@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {Company} from '../models/CompanyModel';
 import {Account} from '../models/AccountModel';
 import {DataService} from './data-service';
+import {Observable} from 'rxjs/observable';
+
+
 declare var firebase: any;
 
 @Injectable()
@@ -12,7 +15,7 @@ export class AccountService {
   public accounts: any;
   public companyData: any;
 
-  constructor() {
+  constructor(public dataService: DataService) {
     this.user = firebase.auth().currentUser;
     this.userdata = firebase.database().ref('/users/');
     this.accounts = firebase.database().ref('/accounts/');
@@ -25,18 +28,35 @@ export class AccountService {
             //this.companyList = data;
             console.log(data);
         })*/;
+  }
+
+    getAll(): Observable<Account> {
+        return Observable.create(observer => {
+            let accountData = this.companyData.child(this.dataService.companyId).child('accounts');
+            let listener = accountData.on('child_added', snapshot => {
+                let data = snapshot.val();
+                observer.next(
+                    //new Account(data.name, data.icon, data.id));
+                    { name: data.name, icon: data.icon, id: data.id });
+            }, observer.error);
+            return () => {
+                accountData.off('child_added', listener);
+            };
+        });
     }
 
-    addAccount(company: Company, account: Account) {
+
+    add( account) {
 
         var newAccount = this.accounts.push();
         newAccount.set({
             name: account.name,
             icon: account.icon,
             balance: 0
+
         });
         // we can also chain the two calls together
-        var inCompany = this.companyData.child(company.id + '/accounts/' ).push();
+        var inCompany = this.companyData.child(this.dataService.companyId + '/accounts/' ).push();
         inCompany.set({
             name: account.name,
             icon: account.icon,
@@ -47,6 +67,27 @@ export class AccountService {
     getAccount(id: any) {
         return this.accounts.child(id).once("value");
     }
+
+    get(id: string): Observable<Account> {
+        return Observable.create(observer => {
+
+            let listener = this.accounts.child(id).on("value", snapshot => {
+                let data = snapshot.val();
+                let account = { name: data.name, icon: data.icon, id: data.id, balance: data.balance, reports: data.reports }
+                this.dataService.selectedAccount = account;
+
+                observer.next(
+                    //return new Company(data.name, data.icon, data.id, data.accounts, data.details, data.locations, data.category, data.subCategory, data.expenseType);
+                    account
+                );
+
+            }, observer.error);
+            return () => {
+                this.accounts.child(id).off("value", listener);
+            };
+        });
+    }
+
 
     addAccountToCompany(company: Company, account: Account) {
         var newAccount = this.companyData.child(company.id).child('Acount').push();

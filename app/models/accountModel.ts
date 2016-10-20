@@ -49,6 +49,7 @@ export class ReportMonth {
     reportId: string;
     accountId: string;
     monthCode: number;
+    amount: number;
     constructor(reportId: string, accountId: string, monthCode: number) {
         this.reportId = reportId;
         this.monthCode = monthCode;
@@ -70,7 +71,8 @@ export class Account {
     icon: string;
     id: string;
     balance: number;
-    reports: ReportMonth[]
+    reports: ReportMonth[];
+    currency: string;
     constructor(name: string, icon: string, id: string, balance?: number, reports?: ReportMonth[]   ) {
         this.name = name;
         this.icon = icon;

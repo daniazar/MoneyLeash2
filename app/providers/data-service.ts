@@ -7,10 +7,11 @@ declare var firebase: any;
 @Injectable()
 export class DataService {
 
-    public selectedCompany: Company;
-    public selectedAccount: Account;
+    public selectedCompany;
+    public selectedAccount;
     public user: any;
-
+    public companyId;
+    public accountId;
     public userDataCompany: any;
     constructor() {
         this.user = firebase.auth().currentUser;

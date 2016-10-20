@@ -18,6 +18,7 @@ export class CompanyModal {
   icons = ICONS;
   name = '';
   myIcon = '';
+  title = 'Company';
   constructor(
       public nav: NavController, public companyService: CompanyService) {
       //console.log(ICONS);

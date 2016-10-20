@@ -26,6 +26,7 @@ import {UserData} from './providers/user-data';
 import {DataService} from './providers/data-service';
 import {CompanyService} from './providers/company-provider';
 import {AccountService} from './providers/account-provider';
+import {ReportService} from './providers/report-provider';
 
 
 declare var touchid: any;
@@ -45,6 +46,7 @@ const COMMON_CONFIG = {
         DataService,
         CompanyService,
         AccountService,
+        ReportService,
         FIREBASE_PROVIDERS,
         defaultFirebase(COMMON_CONFIG),
         firebaseAuthConfig({
