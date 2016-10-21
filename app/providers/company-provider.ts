@@ -130,7 +130,7 @@ export class CompanyService {
 
 
     getCategories(company) {
-        var data = company.categories;
+        var data = company.category;
         var categories = [];
         for (var key in data) {
             var category = { name: data[key] };

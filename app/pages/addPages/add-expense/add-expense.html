@@ -1,38 +1,80 @@
-    <ion-header>
+<ion-header>
     <ion-navbar>
         <ion-title>New Company</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content>
 
-    bank: string;
-    checkNum: string;
-    detail: string;
-    location: string;
-    ticket: Ticket;
-    vendor: Person;
-    tags: string[] //(movies for example)
-    taxOptions: TaxOptions;
-    AFIPdata: AFIPInfo;
 
     <ion-list>
+        <ion-item>
+            <ion-label floating>Type</ion-label>
+            <ion-select [(ngModel)]="expenseType">
+                <ion-option *ngFor="let elmeent of expenseTypes" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Detail</ion-label>
+            <ion-select [(ngModel)]="detail">
+                <ion-option *ngFor="let elmeent of details" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Location</ion-label>
+            <ion-select [(ngModel)]="location">
+                <ion-option *ngFor="let elmeent of locations" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
+            </ion-select>
+        </ion-item>
 
         <ion-item>
             <ion-label floating>category</ion-label>
-            <ion-input [(ngModel)]="category" type="text"></ion-input>
+            <ion-select [(ngModel)]="category">
+                <ion-option *ngFor="let elmeent of categories" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
+            </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>subCategory</ion-label>
             <ion-input [(ngModel)]="subCategory" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>name</ion-label>
-            <ion-input [(ngModel)]="name" type="text"></ion-input>
+            <ion-label floating>bank</ion-label>
+            <ion-input [(ngModel)]="bank" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>Amount</ion-label>
-            <ion-input [(ngModel)]="amount" type="text"></ion-input>
+            <ion-label floating>Check number</ion-label>
+            <ion-input [(ngModel)]="checkNum" type="text"></ion-input>
         </ion-item>
+        <ion-item>
+            <ion-label>Ticket</ion-label>
+        </ion-item>
+            <ion-item>
+                <ion-label floating>Type</ion-label>
+                <ion-select [(ngModel)]="ticket.typ">
+                    <ion-option value="FC">FC</ion-option>
+                    <ion-option value="NC">NC</ion-option>
+                    <ion-option value="TK">TK</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Option</ion-label>
+                <ion-select [(ngModel)]="ticket.opt">
+                    <ion-option value="A">A</ion-option>
+                    <ion-option value="B">B</ion-option>
+                    <ion-option value="C">C</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Number</ion-label>
+                <ion-input [(ngModel)]="ticket.num" type="number"></ion-input>
+            </ion-item>
+        <ion-item>
+            <ion-label floating>Amount</ion-label>
+            <ion-input [(ngModel)]="amount" type="number"></ion-input>
+        </ion-item>
+
+        vendor: Person;
+        tags: string[] //(movies for example)
+
         <ion-item>
             <ion-label floating>expenseDate</ion-label>
             <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="expenseDate"></ion-datetime>
@@ -42,40 +84,79 @@
             <ion-label floating>Currency</ion-label>
             <ion-input [(ngModel)]="currency" type="text"></ion-input>
         </ion-item>
-
         <ion-item>
             <ion-label floating>Comments</ion-label>
-            <ion-input [(ngModel)]="comments" type="text"></ion-input>
+            <ion-input [(ngModel)]="comments" type="textarea"></ion-input>
         </ion-item>
-
-        <ion-item>
-            <ion-icon [name]="myIcon" item-left></ion-icon>
-            <ion-label floating>icon</ion-label>
-            <ion-select [(ngModel)]="myIcon">
-                <ion-option *ngFor="let icon of icons" value="{{icon}}">{{icon}}</ion-option>
-            </ion-select>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Comments</ion-label>
-            <ion-input [(ngModel)]="comments" type="text"></ion-input>
-        </ion-item>
-
         <ion-item>
             <ion-label floating>Iva Retention</ion-label>
             <ion-input [(ngModel)]="IVAretention" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Tax Option</ion-label>
+            <ion-select [(ngModel)]="taxOption">
+                <ion-option value="No Gravado">No Gravado</ion-option>
+                <ion-option value="Neto Gravado al 10.5%">Neto Gravado al 10.5%</ion-option>
+                <ion-option value="Neto gravado al 21%">Neto gravado al 21%</ion-option>
+                <ion-option value="Neto Gravado al 27%">Neto Gravado al 27%</ion-option>
+            </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>IIBB Retention</ion-label>
             <ion-input [(ngModel)]="IIBBretention" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>AFIP</ion-label>
+            <ion-label>AFIP</ion-label>
             <ion-toggle [(ngModel)]="AFIP">
             </ion-toggle>
         </ion-item>
-        <ion-item [hidden]="!AFIP">
-            AFIPdata
-        </ion-item>
+        <div [hidden]="!AFIP">
+            <ion-item>
+                <ion-label floating>Periodo</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.periodo" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Cuota</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.cuota" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>lugar De Pago</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.lugarDePago" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Sucursal</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.sucursal" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Terminal</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.terminal" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Usuario</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.usuario" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Conceptop</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.conceptop" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>subConc</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.subConc" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Retention Date</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.retentionDate" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Retention Agent</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.retentionAgent" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Sujeto Retenido</ion-label>
+                <ion-input [(ngModel)]="AFIPInfo.sujetoRetenido" type="text"></ion-input>
+            </ion-item>
+
+        </div>
 
     </ion-list>
 

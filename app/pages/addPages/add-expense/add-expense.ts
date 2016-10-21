@@ -1,8 +1,12 @@
 import {Component} from '@angular/core';
 import {NavController, MenuController, Alert} from 'ionic-angular';
 import {Company} from '../../../models/CompanyModel';
-import {CompanyService} from '../../../providers/company-provider';
 import {ICONS} from '../../../models/iconsOption';
+import {DataService} from '../../../providers/data-service';
+
+import {CompanyService} from '../../../providers/company-provider';
+import {AccountService} from '../../../providers/account-provider';
+import {ReportService} from '../../../providers/report-provider';
 
 
 @Component({
@@ -18,9 +22,30 @@ export class ExpenseModal {
   icons = ICONS;
   name = '';
   myIcon = '';
+  currency;
+    details;
+    locations;
+    expenseTypes;
+    categories;
+    ticket = {};
+    AFIPInfo = {};
   constructor(
-      public nav: NavController, public companyService: CompanyService) {
+      public nav: NavController, public accountService: AccountService, public companyService: CompanyService, public reportService: ReportService, public dataService: DataService) {
       //console.log(ICONS);
+
+      this.accountService.get(dataService.accountId).subscribe((val) => {
+          //this.balance = val.balance;
+          this.currency = val.currency;
+      });
+
+      this.companyService.get(dataService.companyId).subscribe((val) => {
+          this.details = companyService.getDetails(val);
+          this.locations = companyService.getLocation(val);
+          this.expenseTypes = companyService.getExpenseType(val);
+          this.categories = companyService.getCategories(val);
+      });
+
+      
   }
       
   private onSubmit(): void {
