@@ -11,11 +11,16 @@ import {LogoutPage} from './pages/logout/logout';
 
 // App pages
 import {AccountListPage} from './pages/listPages/account-list';
+import {CompanyListPage} from './pages/listPages/company-list';
 import {CategoryListPage} from './pages/mymoney/category-list/category-list';
 import {BudgetListPage} from './pages/mymoney/budget-list/budget-list';
 import {RecurringListPage} from './pages/mymoney/recurring-list/recurring-list';
 import {PayeeListPage} from './pages/mymoney/payee-list/payee-list';
 import {ReportListPage} from './pages/mymoney/report-list/report-list';
+import {DetailsListPage} from './pages/listPages/string-list/details-list';
+import {LocationsListPage} from './pages/listPages/string-list/locations-list';
+import {CategoriesListPage} from './pages/listPages/string-list/categories-list';
+import {ExpenseTypeListPage} from './pages/listPages/string-list/expenseType-list';
 
 // Settings pages
 import {SettingsPage} from './pages/mysettings/settings/settings';
@@ -87,7 +92,14 @@ class MoneyLeashApp {
         // the left menu only works after login
         // the login page disables the left menu
         this.pages = [
+            
+            { title: 'Companies', component: CompanyListPage, icon: 'ios-browsers-outline', color: '', },
             { title: 'Accounts', component: AccountListPage, icon: 'ios-browsers-outline', color: '', },
+            { title: 'Details', component: DetailsListPage, icon: 'ios-browsers-outline', color: '', },
+            { title: 'Categories', component: CategoriesListPage, icon: 'ios-browsers-outline', color: '', },
+            { title: 'Locations', component: LocationsListPage, icon: 'ios-browsers-outline', color: '', },
+            { title: 'Expense Types', component: ExpenseTypeListPage, icon: 'ios-browsers-outline', color: '', },
+            { title: 'Reports', component: ReportListPage, icon: 'ios-color-wand-outline', color: '', },
             { title: 'Budgets', component: BudgetListPage, icon: 'ios-color-wand-outline', color: '', },
             { title: 'Categories', component: CategoryListPage, icon: 'ios-attach-outline', color: '', },
             { title: 'Payees', component: PayeeListPage, icon: 'ios-contacts-outline', color: '', },

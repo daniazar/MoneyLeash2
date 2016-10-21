@@ -37,6 +37,8 @@ export class AccountListPage {
   }
   public selectElement(account: Account) {
       this.dataService.selectedAccount = account;
+      this.dataService.accountId = account.id;
+      
       this.nav.push(ReportListPage, { animate: true, direction: 'up' });
   }
 

@@ -98,23 +98,64 @@ export class CompanyService {
 
         });
     }
+    getExpenseType(company) {
+        var data = company.expenseType;
+        var expenseTypes = [];
+        for (var key in data) {
+            var expenseType = { name: data[key] };
+            expenseTypes.push(expenseType);
+        }
+        return expenseTypes;
+    }
+
+    addExpenseType(expenseType) {
+        var newRef = this.companyData.child(this.dataService.companyId).child('expenseType').push();
+        newRef.set(expenseType);
+    }
+
+    getLocation(company) {
+        var data = company.locations;
+        var locations = [];
+        for (var key in data) {
+            var location = { name: data[key] };
+            locations.push(location);
+        }
+        return locations;
+    }
+
+    addLocation(location) {
+        var newRef = this.companyData.child(this.dataService.companyId).child('locations').push();
+        newRef.set(location);
+    }
+
+
+    getCategories(company) {
+        var data = company.categories;
+        var categories = [];
+        for (var key in data) {
+            var category = { name: data[key] };
+            categories.push(category);
+        }
+        return categories;
+    }
+
+    addCategory(category) {
+        var newRef = this.companyData.child(this.dataService.companyId).child('category').push();
+        newRef.set(category);
+    }
 
     getDetails(company) {
         var data = company.details;
         var details = [];
         for (var key in data) {
-            //var company = new Company(data[key].name, data[key].icon, data[key].id);
-            var detail = { name: data[key].name};
-            
+            var detail = { name: data[key]};
             details.push(detail);
         }
         return details;
-
     }
 
     addDetails(details) {
-        
-        var newRef = this.companyData.child(this.dataService.selectedCompany.id).child('details').push();
+        var newRef = this.companyData.child(this.dataService.companyId).child('details').push();
         newRef.set( details );
     }
 

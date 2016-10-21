@@ -14,10 +14,7 @@
 <ion-content>
     <ion-list>
         <ion-item *ngFor="let element of elements" (click)="selectElement(element)">
-            <ion-icon name="{{element.icon}}" item-left></ion-icon>
-            <h2>{{element.month}}</h2>
-            <h3>{{element.items}}</h3>
-            <span item-right> {{element.balance}} </span>
+            {{element.name}}
         </ion-item>
     </ion-list>
 </ion-content>

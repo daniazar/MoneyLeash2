@@ -12,6 +12,17 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
+    <ion-card>
+
+        <ion-card-header>
+            Balance {{balance}}
+        </ion-card-header>
+
+        <ion-card-content>
+            <!-- Add card content here! -->
+        </ion-card-content>
+
+    </ion-card>
     <ion-list>
         <ion-item *ngFor="let element of elements" (click)="selectElement(element)">
             <ion-icon name="{{element.icon}}" item-left></ion-icon>

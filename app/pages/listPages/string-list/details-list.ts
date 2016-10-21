@@ -8,25 +8,25 @@ import {CompanyService} from '../../../providers/company-provider';
 import {AccountService} from '../../../providers/account-provider';
 import {ReportService} from '../../../providers/report-provider';
 
-import {ExpenseModal} from '../../addPages/add-expense/add-expense';
+import {DetailsModal} from '../../addPages/add-string/add-details';
 
 @Component({
-    templateUrl: 'build/pages/listPages/report-list/report-list.html',
+    templateUrl: 'build/pages/listPages/string-list/string-list.html',
 
 })
 
 export class DetailsListPage {
     login: { username?: string, password?: string } = {};
     submitted = false;
-    elements: ReportMonth[];
+    elements;
     constructor(
         public nav: NavController, public accountService: AccountService, public companyService: CompanyService, public reportService: ReportService, public dataService: DataService) {
         this.elements = []
-        this.companyService.get(dataService.selectedCompany.id).subscribe((val) => {
+        this.companyService.get(dataService.companyId).subscribe((val) => {
             this.elements = companyService.getDetails(val);
         });
     }
-    details: string[];
+    title = 'Detail'
     locations: string[];
     category: string[];
     subCategory: string[];
@@ -44,7 +44,7 @@ export class DetailsListPage {
     }
 
     public addElement() {
-        this.nav.push(ExpenseModal, { animate: true, direction: 'up' });
+        this.nav.push(DetailsModal, { animate: true, direction: 'up' });
     }
 
 
