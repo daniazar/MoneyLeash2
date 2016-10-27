@@ -9,47 +9,47 @@
     <ion-list>
         <ion-item>
             <ion-label floating>Type</ion-label>
-            <ion-select [(ngModel)]="expenseType">
+            <ion-select [(ngModel)]="expense.expenseType">
                 <ion-option *ngFor="let elmeent of expenseTypes" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>Detail</ion-label>
-            <ion-select [(ngModel)]="detail">
+            <ion-select [(ngModel)]="expense.detail">
                 <ion-option *ngFor="let elmeent of details" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>Location</ion-label>
-            <ion-select [(ngModel)]="location">
+            <ion-select [(ngModel)]="exepnse.location">
                 <ion-option *ngFor="let elmeent of locations" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
             </ion-select>
         </ion-item>
 
         <ion-item>
             <ion-label floating>category</ion-label>
-            <ion-select [(ngModel)]="category">
+            <ion-select [(ngModel)]="exepnse.category">
                 <ion-option *ngFor="let elmeent of categories" value="{{elmeent.name}}">{{elmeent.name}}</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>subCategory</ion-label>
-            <ion-input [(ngModel)]="subCategory" type="text"></ion-input>
+            <ion-input [(ngModel)]="exepnse.subCategory" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>bank</ion-label>
-            <ion-input [(ngModel)]="bank" type="text"></ion-input>
+            <ion-input [(ngModel)]="exepnse.bank" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Check number</ion-label>
-            <ion-input [(ngModel)]="checkNum" type="text"></ion-input>
+            <ion-input [(ngModel)]="exepnse.checkNum" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Ticket</ion-label>
         </ion-item>
             <ion-item>
                 <ion-label floating>Type</ion-label>
-                <ion-select [(ngModel)]="ticket.typ">
+                <ion-select [(ngModel)]="exepnse.ticket.typ">
                     <ion-option value="FC">FC</ion-option>
                     <ion-option value="NC">NC</ion-option>
                     <ion-option value="TK">TK</ion-option>
@@ -57,7 +57,7 @@
             </ion-item>
             <ion-item>
                 <ion-label floating>Option</ion-label>
-                <ion-select [(ngModel)]="ticket.opt">
+                <ion-select [(ngModel)]="exepnse.ticket.opt">
                     <ion-option value="A">A</ion-option>
                     <ion-option value="B">B</ion-option>
                     <ion-option value="C">C</ion-option>
@@ -65,11 +65,11 @@
             </ion-item>
             <ion-item>
                 <ion-label floating>Number</ion-label>
-                <ion-input [(ngModel)]="ticket.num" type="number"></ion-input>
+                <ion-input [(ngModel)]="exepnse.ticket.num" type="number"></ion-input>
             </ion-item>
         <ion-item>
             <ion-label floating>Amount</ion-label>
-            <ion-input [(ngModel)]="amount" type="number"></ion-input>
+            <ion-input [(ngModel)]="exepnse.amount" type="number"></ion-input>
         </ion-item>
 
         vendor: Person;
@@ -77,24 +77,24 @@
 
         <ion-item>
             <ion-label floating>expenseDate</ion-label>
-            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="expenseDate"></ion-datetime>
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="exepnse.expenseDate"></ion-datetime>
 
         </ion-item>
         <ion-item>
             <ion-label floating>Currency</ion-label>
-            <ion-input [(ngModel)]="currency" type="text"></ion-input>
+            <ion-input [(ngModel)]="exepnse.currency" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Comments</ion-label>
-            <ion-input [(ngModel)]="comments" type="textarea"></ion-input>
+            <ion-input [(ngModel)]="exepnse.comments" type="textarea"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Iva Retention</ion-label>
-            <ion-input [(ngModel)]="IVAretention" type="text"></ion-input>
+            <ion-input [(ngModel)]="exepnse.IVAretention" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Tax Option</ion-label>
-            <ion-select [(ngModel)]="taxOption">
+            <ion-select [(ngModel)]="exepnse.taxOption">
                 <ion-option value="No Gravado">No Gravado</ion-option>
                 <ion-option value="Neto Gravado al 10.5%">Neto Gravado al 10.5%</ion-option>
                 <ion-option value="Neto gravado al 21%">Neto gravado al 21%</ion-option>
@@ -103,57 +103,57 @@
         </ion-item>
         <ion-item>
             <ion-label floating>IIBB Retention</ion-label>
-            <ion-input [(ngModel)]="IIBBretention" type="text"></ion-input>
+            <ion-input [(ngModel)]="exepnse.IIBBretention" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>AFIP</ion-label>
-            <ion-toggle [(ngModel)]="AFIP">
+            <ion-toggle [(ngModel)]="exepnse.AFIP">
             </ion-toggle>
         </ion-item>
         <div [hidden]="!AFIP">
             <ion-item>
                 <ion-label floating>Periodo</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.periodo" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.periodo" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Cuota</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.cuota" type="number"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.cuota" type="number"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>lugar De Pago</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.lugarDePago" type="number"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.lugarDePago" type="number"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Sucursal</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.sucursal" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.sucursal" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Terminal</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.terminal" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.terminal" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Usuario</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.usuario" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.usuario" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Conceptop</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.conceptop" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.conceptop" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>subConc</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.subConc" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.subConc" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Retention Date</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.retentionDate" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.retentionDate" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Retention Agent</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.retentionAgent" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.retentionAgent" type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Sujeto Retenido</ion-label>
-                <ion-input [(ngModel)]="AFIPInfo.sujetoRetenido" type="text"></ion-input>
+                <ion-input [(ngModel)]="exepnse.AFIPInfo.sujetoRetenido" type="text"></ion-input>
             </ion-item>
 
         </div>

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Company} from '../models/CompanyModel';
+import {Expense} from '../models/ExpenseModel';
 import {Account} from '../models/AccountModel';
 import {DataService} from './data-service';
 import {Observable} from 'rxjs/observable';
@@ -93,5 +94,11 @@ export class AccountService {
         var newAccount = this.companyData.child(company.id).child('Acount').push();
         newAccount.set(account);
     }
+
+    createReport(expense: Expense, account: Account) {
+        var newAccount = this.companyData.child(company.id).child('Acount').push();
+        newAccount.set(account);
+    }
+
 
 }

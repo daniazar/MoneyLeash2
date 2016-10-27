@@ -22,7 +22,7 @@ export class ExpenseModal {
   icons = ICONS;
   name = '';
   myIcon = '';
-  currency;
+  expense = { currency: null};  
     details;
     locations;
     expenseTypes;
@@ -35,7 +35,7 @@ export class ExpenseModal {
 
       this.accountService.get(dataService.accountId).subscribe((val) => {
           //this.balance = val.balance;
-          this.currency = val.currency;
+          this.expense.currency = val.currency;
       });
 
       this.companyService.get(dataService.companyId).subscribe((val) => {
